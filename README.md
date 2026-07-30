@@ -1,4 +1,4 @@
-# 🚨 ResQAI — Smart Disaster Response & Emergency Coordination Platform
+# ResQAI — Smart Disaster Response & Emergency Coordination Platform
 
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?logo=fastapi)](https://fastapi.tiangolo.com)
 [![Firebase](https://img.shields.io/badge/Firebase-Firestore-FFCA28?logo=firebase)](https://firebase.google.com)
@@ -9,7 +9,7 @@ ResQAI is a production-ready disaster response platform featuring **AI-powered i
 
 ---
 
-## 📐 Architecture
+## Architecture
 
 ```
 ResQAI/
@@ -38,7 +38,7 @@ ResQAI/
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Clone the Repository
 
@@ -105,7 +105,7 @@ npm run dev         # With file watching
 
 ---
 
-## 🔐 Authentication
+## Authentication
 
 All protected endpoints require a `Bearer` token in the `Authorization` header.
 
@@ -133,7 +133,7 @@ Content-Type: application/json
 
 ---
 
-## 🌐 WebSocket
+## WebSocket
 
 Connect to the real-time event stream with a valid JWT token:
 
@@ -175,7 +175,7 @@ On error:
 
 ---
 
-## 🎨 Theme System
+## Theme System
 
 The frontend supports **Light and Dark themes** via CSS custom properties.
 
@@ -196,7 +196,7 @@ Add a toggle button in HTML:
 
 ---
 
-## 🧪 Running Tests
+## Running Tests
 
 ```bash
 # Run all tests
@@ -234,7 +234,7 @@ pytest backend/tests/test_auth.py -v
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch: `git checkout -b feature/your-feature`
@@ -243,6 +243,6 @@ pytest backend/tests/test_auth.py -v
 
 ---
 
-## 📄 License
+## License
 
 MIT License — see [LICENSE](LICENSE) for details.
