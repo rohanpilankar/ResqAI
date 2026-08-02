@@ -1,26 +1,45 @@
-/* Glass Card */
+/* ═══════════════════════════════════════════════════════════════════
+   ResQAI — Premium Cards System
+   Glass cards, gradient borders, stat cards, incident cards
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Base Glass Card ───────────────────────────────────────────────── */
 .card {
   background: var(--bg-card);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
   padding: 24px;
   transition: all var(--transition-med);
   position: relative;
   overflow: hidden;
-}
-.card:hover {
-  background: var(--bg-card-hover);
-  border-color: rgba(255,255,255,0.18);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-sm);
 }
 
-/* Stat Card */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+  pointer-events: none;
+}
+
+.card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--glass-border-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md), 0 0 20px rgba(59, 130, 246, 0.08);
+}
+
+/* ── Stat Card ─────────────────────────────────────────────────────── */
 .stat-card {
   background: var(--bg-card);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
   padding: 24px;
@@ -28,11 +47,24 @@
   align-items: center;
   gap: 18px;
   transition: all var(--transition-med);
+  position: relative;
+  overflow: hidden;
 }
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 100%);
+  pointer-events: none;
+}
+
 .stat-card:hover {
   transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
+  border-color: rgba(59, 130, 246, 0.25);
+  box-shadow: var(--shadow-md), var(--glass-glow-blue);
 }
+
 .stat-card .stat-icon {
   width: 56px;
   height: 56px;
@@ -42,41 +74,59 @@
   justify-content: center;
   font-size: 1.4rem;
   flex-shrink: 0;
+  transition: transform var(--transition-fast);
 }
-.stat-card .stat-icon.red    { background: rgba(230,57,70,0.15);  color: var(--primary); }
-.stat-card .stat-icon.blue   { background: rgba(59,130,246,0.15); color: var(--info); }
-.stat-card .stat-icon.green  { background: rgba(16,185,129,0.15); color: var(--success); }
-.stat-card .stat-icon.orange { background: rgba(245,158,11,0.15); color: var(--warning); }
-.stat-card .stat-icon.purple { background: rgba(139,92,246,0.15); color: #8b5cf6; }
+
+.stat-card:hover .stat-icon {
+  transform: scale(1.08) rotate(3deg);
+}
+
+.stat-card .stat-icon.blue   { background: rgba(59, 130, 246, 0.15); color: var(--info); border: 1px solid rgba(59, 130, 246, 0.25); }
+.stat-card .stat-icon.purple { background: rgba(124, 58, 237, 0.15); color: var(--purple); border: 1px solid rgba(124, 58, 237, 0.25); }
+.stat-card .stat-icon.cyan   { background: rgba(6, 182, 212, 0.15); color: var(--cyan); border: 1px solid rgba(6, 182, 212, 0.25); }
+.stat-card .stat-icon.green  { background: rgba(16, 185, 129, 0.15); color: var(--success); border: 1px solid rgba(16, 185, 129, 0.25); }
+.stat-card .stat-icon.orange { background: rgba(245, 158, 11, 0.15); color: var(--warning); border: 1px solid rgba(245, 158, 11, 0.25); }
+.stat-card .stat-icon.red    { background: rgba(239, 68, 68, 0.15); color: var(--danger); border: 1px solid rgba(239, 68, 68, 0.25); }
 
 .stat-card .stat-value {
   font-size: 2rem;
-  font-weight: 800;
+  font-weight: var(--fw-extrabold);
   color: var(--text-primary);
   line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
 }
+
 .stat-card .stat-label {
   font-size: 0.82rem;
   color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-top: 4px;
+  font-weight: var(--fw-semibold);
 }
 
-/* Incident Card */
+/* ── Incident Card ─────────────────────────────────────────────────── */
 .incident-card {
   background: var(--bg-card);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
   padding: 18px 20px;
   transition: all var(--transition-med);
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
+
 .incident-card:hover {
   background: var(--bg-card-hover);
-  border-color: rgba(230,57,70,0.4);
-  box-shadow: 0 0 0 1px rgba(230,57,70,0.2);
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(59, 130, 246, 0.1);
+  transform: translateY(-2px);
 }
+
 .incident-card .severity-bar {
   width: 4px;
   border-radius: 2px;
@@ -85,19 +135,22 @@
   top: 0;
   bottom: 0;
 }
-.incident-card.critical .severity-bar { background: var(--severity-critical); }
-.incident-card.high .severity-bar     { background: var(--severity-high); }
+
+.incident-card.critical .severity-bar { background: var(--severity-critical); box-shadow: 0 0 8px var(--severity-critical); }
+.incident-card.high .severity-bar     { background: var(--severity-high); box-shadow: 0 0 8px var(--severity-high); }
 .incident-card.medium .severity-bar   { background: var(--severity-medium); }
 .incident-card.low .severity-bar      { background: var(--severity-low); }
 
-/* Section header */
+/* ── Section Header ────────────────────────────────────────────────── */
 .section-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
 }
+
 .section-header h2 {
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.01em;
 }

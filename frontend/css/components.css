@@ -1,25 +1,35 @@
-/* General components */
+/* ═══════════════════════════════════════════════════════════════════
+   ResQAI — UI Component Utilities
+   Progress bars, status indicators, timelines, empty states, alert banners
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Divider ───────────────────────────────────────────────────────── */
 .divider {
   height: 1px;
   background: var(--glass-border);
   margin: 20px 0;
 }
+
+/* ── Progress Bar ──────────────────────────────────────────────────── */
 .progress-bar-wrapper {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.06);
   border-radius: 10px;
   height: 8px;
   overflow: hidden;
 }
+
 .progress-bar-fill {
   height: 100%;
   border-radius: 10px;
   transition: width var(--transition-slow);
 }
-.progress-bar-fill.red    { background: linear-gradient(90deg, var(--primary), var(--primary-dark)); }
-.progress-bar-fill.green  { background: linear-gradient(90deg, var(--success), #059669); }
-.progress-bar-fill.orange { background: linear-gradient(90deg, var(--warning), var(--accent-dark)); }
+.progress-bar-fill.red    { background: linear-gradient(90deg, #EF4444, #DC2626); }
+.progress-bar-fill.green  { background: linear-gradient(90deg, #10B981, #059669); }
+.progress-bar-fill.orange { background: linear-gradient(90deg, #F59E0B, #D97706); }
+.progress-bar-fill.blue   { background: linear-gradient(90deg, #3B82F6, #2563EB); }
+.progress-bar-fill.purple { background: linear-gradient(90deg, #7C3AED, #6D28D9); }
 
-/* Status indicator dot */
+/* ── Status Indicator Dot ──────────────────────────────────────────── */
 .status-dot {
   width: 8px;
   height: 8px;
@@ -27,14 +37,16 @@
   display: inline-block;
   flex-shrink: 0;
 }
-.status-dot.online   { background: var(--success); box-shadow: 0 0 6px var(--success); }
-.status-dot.busy     { background: var(--warning); }
+.status-dot.online   { background: var(--success); box-shadow: 0 0 8px var(--success); }
+.status-dot.busy     { background: var(--warning); box-shadow: 0 0 8px var(--warning); }
 .status-dot.offline  { background: var(--text-muted); }
-.status-dot.critical { background: var(--primary); box-shadow: 0 0 6px var(--primary); animation: blink 1s ease infinite; }
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.status-dot.critical { background: var(--danger); box-shadow: 0 0 8px var(--danger); animation: blink 1s ease infinite; }
 
-/* Timeline */
-.timeline { position: relative; padding-left: 24px; }
+/* ── Timeline ──────────────────────────────────────────────────────── */
+.timeline {
+  position: relative;
+  padding-left: 24px;
+}
 .timeline::before {
   content: '';
   position: absolute;
@@ -42,15 +54,17 @@
   top: 6px;
   bottom: 6px;
   width: 2px;
-  background: var(--glass-border);
+  background: linear-gradient(180deg, var(--primary), var(--secondary), var(--glass-border));
 }
+
 .timeline-item {
   position: relative;
   margin-bottom: 20px;
   padding-bottom: 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 .timeline-item:last-child { border-bottom: none; margin-bottom: 0; }
+
 .timeline-dot {
   position: absolute;
   left: -24px;
@@ -61,11 +75,12 @@
   border: 2px solid var(--primary);
   background: var(--bg-dark);
   z-index: 1;
+  box-shadow: 0 0 8px var(--primary);
 }
-.timeline-item.success .timeline-dot { border-color: var(--success); }
-.timeline-item.warning .timeline-dot { border-color: var(--warning); }
+.timeline-item.success .timeline-dot { border-color: var(--success); box-shadow: 0 0 8px var(--success); }
+.timeline-item.warning .timeline-dot { border-color: var(--warning); box-shadow: 0 0 8px var(--warning); }
 
-/* Empty state */
+/* ── Empty State ───────────────────────────────────────────────────── */
 .empty-state {
   text-align: center;
   padding: 60px 24px;
@@ -75,6 +90,7 @@
   font-size: 3rem;
   margin-bottom: 16px;
   opacity: 0.4;
+  color: var(--primary-light);
 }
 .empty-state h3 {
   font-size: 1rem;
@@ -85,7 +101,7 @@
   font-size: 0.85rem;
 }
 
-/* Alert banner */
+/* ── Alert Banner ──────────────────────────────────────────────────── */
 .alert-banner {
   display: flex;
   align-items: center;
@@ -94,8 +110,9 @@
   border-radius: var(--radius-sm);
   border-left: 4px solid;
   margin-bottom: 16px;
+  backdrop-filter: blur(8px);
 }
-.alert-danger  { background: rgba(239,68,68,0.10);  border-color: var(--danger); }
-.alert-warning { background: rgba(245,158,11,0.10); border-color: var(--warning); }
-.alert-success { background: rgba(16,185,129,0.10); border-color: var(--success); }
-.alert-info    { background: rgba(59,130,246,0.10);  border-color: var(--info); }
+.alert-danger  { background: rgba(239, 68, 68, 0.10);  border-color: var(--danger); }
+.alert-warning { background: rgba(245, 158, 11, 0.10); border-color: var(--warning); }
+.alert-success { background: rgba(16, 185, 129, 0.10); border-color: var(--success); }
+.alert-info    { background: rgba(59, 130, 246, 0.10);  border-color: var(--info); }

@@ -4,7 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ResQAI - Smart Disaster Response & Emergency Coordination Platform</title>
+  <meta name="theme-color" content="#050816">
+  <title>ResQAI - World-Class AI Disaster Intelligence & Emergency Response Platform</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- CSS Dependencies -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -15,215 +21,527 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/buttons.css">
   <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/forms.css">
   <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/command-center.css">
+  <link rel="stylesheet" href="css/landing-redesign.css">
   <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
 
-  <!-- Landing Header -->
-  <nav class="topbar px-4 py-3">
+  <!-- ── 1. Floating Glass Navbar ──────────────────────────────────────── -->
+  <nav class="navbar-landing d-flex align-items-center justify-content-between" id="landing-navbar" aria-label="Main Navigation">
     <div class="d-flex align-items-center gap-3">
-      <div class="brand-logo"
-        style="width: 40px; height: 40px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #fff; box-shadow: var(--shadow-glow-red);">
+      <div class="brand-logo" style="width: 42px; height: 42px; background: var(--gradient-brand); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; color: #fff; box-shadow: var(--shadow-glow-blue);">
         <i class="fa fa-shield-alt"></i>
       </div>
-      <span class="font-weight-800 fs-4 color-white">ResQ<span style="color: var(--primary);">AI</span></span>
+      <span class="font-weight-800 fs-4 color-white">ResQ<span style="color: var(--primary-light);">AI</span></span>
     </div>
+
+    <div class="nav-links d-none d-lg-flex">
+      <a href="#hero" class="nav-link-item active">Home</a>
+      <a href="#features" class="nav-link-item">Capabilities</a>
+      <a href="#ai-showcase" class="nav-link-item">AI Engine</a>
+      <a href="#live-dashboard-section" class="nav-link-item">Live Telemetry</a>
+      <a href="#workflow" class="nav-link-item">Workflow</a>
+      <a href="#tech" class="nav-link-item">Stack</a>
+      <a href="#faq" class="nav-link-item">FAQ</a>
+    </div>
+
     <div class="d-flex align-items-center gap-3">
-      <a href="login.html" class="btn btn-secondary btn-sm"><i class="fa fa-sign-in-alt"></i> Portal Login</a>
-      <a href="login.html?register=true" class="btn btn-primary btn-sm"><i class="fa fa-exclamation-circle"></i> Report
-        Incident</a>
+      <div class="d-none d-md-flex align-items-center gap-2 px-3 py-1 rounded-pill" style="background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); color: var(--success); font-size: 0.78rem; font-weight: 700;">
+        <span class="cc-live-dot"></span> LIVE COMMAND
+      </div>
+      <a href="login.html" class="btn btn-secondary btn-sm"><i class="fa fa-sign-in-alt me-1"></i> Portal Login</a>
+      <a href="login.html?register=true" class="btn btn-primary btn-sm"><i class="fa fa-exclamation-triangle me-1"></i> Report Emergency</a>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero-section text-center">
-    <video class="hero-video" id="hero-bg-video" preload="auto" autoplay muted loop playsinline poster="data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' width%3D'1920' height%3D'1080' viewBox%3D'0 0 1920 1080'%3E%3Crect width%3D'100%25' height%3D'100%25' fill%3D'%230a0f1e'%2F%3E%3Cpath d%3D'M0 100h1920M0 200h1920M0 300h1920M0 400h1920M0 500h1920M0 600h1920M0 700h1920M0 800h1920M0 900h1920M0 1000h1920M100 0v1080M200 0v1080M300 0v1080M400 0v1080M500 0v1080M600 0v1080M700 0v1080M800 0v1080M900 0v1080M1000 0v1080M1100 0v1080M1200 0v1080M1300 0v1080M1400 0v1080M1500 0v1080M1600 0v1080M1700 0v1080M1800 0v1080' stroke%3D'rgba(230,57,70,0.03)' stroke-width%3D'1'%2F%3E%3C/svg%3E">
+  <!-- ── 2. Cinematic Hero Environment ─────────────────────────────────── -->
+  <section class="hero-landing" id="hero">
+    <!-- Interactive Background Canvas -->
+    <canvas id="hero-canvas"></canvas>
+
+    <video class="hero-video" id="hero-bg-video" preload="auto" autoplay muted loop playsinline poster="data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' width%3D'1920' height%3D'1080' viewBox%3D'0 0 1920 1080'%3E%3Crect width%3D'100%25' height%3D'100%25' fill%3D'%23050816'%2F%3E%3C%2Fsvg%3E">
       <source src="assets/bg-video.mp4" type="video/mp4">
     </video>
+
+    <div class="hero-particle-grid"></div>
+    <div class="hero-grid-pattern"></div>
     <div class="hero-overlay"></div>
-    <div class="container hero-content py-5">
-      <span class="badge badge-critical mb-3 px-3 py-2 fs-6"><i class="fa fa-broadcast-tower fa-spin me-2"></i> Live Emergency Command System</span>
-      <h1 class="display-3 font-weight-900 mb-3" style="letter-spacing: -0.03em;">Smart Disaster Response &amp; Rapid Coordination</h1>
-      <p class="fs-5 color-muted mb-4">Empowering citizens, rescue squads, and government authorities with real-time incident tracking, AI-assisted severity assessment, live status updates, and shelter availability.</p>
-      <div class="d-flex justify-content-center gap-3 flex-wrap">
-        <a href="login.html?register=true" class="btn btn-primary btn-lg"><i class="fa fa-exclamation-circle me-2"></i> Report Emergency</a>
-        <a href="#live-dashboard-section" class="btn btn-secondary btn-lg"><i class="fa fa-chart-line me-2"></i> Live Situation Board</a>
+
+    <div class="hero-content-wrapper">
+      <div class="hero-badge-pill animate-fade-in-down">
+        <i class="fa fa-microchip text-cyan"></i>
+        <span>AI-POWERED DISASTER INTELLIGENCE PLATFORM</span>
+      </div>
+
+      <h1 class="hero-title-main animate-fade-in-up">
+        Predict Earlier. Respond Faster.
+        <span class="hero-title-gradient">Save More Lives.</span>
+      </h1>
+
+      <p class="hero-subtitle animate-fade-in-up stagger-1">
+        Next-generation disaster intelligence combining satellite telemetry, neural predictive analytics, real-time GIS mapping, and automated resource dispatch for citizens, rescue teams, and government authorities.
+      </p>
+
+      <div class="hero-cta-group animate-fade-in-up stagger-2">
+        <a href="login.html?register=true" class="btn btn-primary btn-lg glow-pulse">
+          <i class="fa fa-exclamation-triangle me-2"></i> Report Emergency
+        </a>
+        <a href="dashboard.html" class="btn btn-secondary btn-lg">
+          <i class="fa fa-play-circle me-2 text-cyan"></i> Launch AI Command Center
+        </a>
+        <a href="#live-dashboard-section" class="btn btn-ghost btn-lg text-primary-light">
+          <i class="fa fa-map-marker-alt me-2 text-success"></i> Find Nearby Shelter
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Live Emergency Dashboard Section -->
+  <!-- ── 3. Floating Live Status Bar ───────────────────────────────────── -->
+  <div class="container">
+    <div class="status-bar-floating">
+      <div class="status-bar-item">
+        <span class="pulse-indicator"></span>
+        <span>System Status: <strong>Operational (DEFCON 2)</strong></span>
+      </div>
+      <div class="status-bar-item">
+        <i class="fa fa-brain text-purple"></i>
+        <span>AI Accuracy: <strong>98.6% Precision</strong></span>
+      </div>
+      <div class="status-bar-item">
+        <i class="fa fa-cloud-sun-rain text-cyan"></i>
+        <span>Emergency Weather: <strong>28°C / Cyclone Advisory</strong></span>
+      </div>
+      <div class="status-bar-item">
+        <i class="fa fa-network-wired text-info"></i>
+        <span>API: <span id="status-api" class="status-badge status-connecting">Checking</span></span>
+      </div>
+      <div class="status-bar-item">
+        <i class="fa fa-wifi text-warning"></i>
+        <span>WebSocket: <span id="status-ws" class="status-badge status-connecting">Checking</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 4. Trusted Agencies Logo Cloud ────────────────────────────────── -->
+  <section class="trusted-agencies-section">
+    <div class="container">
+      <div class="trusted-label">Trusted by Leading Emergency Management Agencies &amp; Relief Forces</div>
+      <div class="agencies-logo-cloud">
+        <div class="agency-chip"><i class="fa fa-building-shield text-primary"></i> National Disaster Management</div>
+        <div class="agency-chip"><i class="fa fa-cross text-danger"></i> International Red Cross</div>
+        <div class="agency-chip"><i class="fa fa-landmark text-warning"></i> Civil Defense Corps</div>
+        <div class="agency-chip"><i class="fa fa-helicopter text-info"></i> Rapid Relief Air Wing</div>
+        <div class="agency-chip"><i class="fa fa-shield-cat text-success"></i> Coast Guard Command</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider-glow"></div>
+
+  <!-- ── 5. Live Metrics Section ───────────────────────────────────────── -->
+  <section class="container my-5" id="live-metrics">
+    <div class="text-center mb-5">
+      <span class="badge badge-info px-3 py-2 fs-6 mb-2"><i class="fa fa-chart-line me-2"></i> Realtime Situation Metrics</span>
+      <h2 class="display-6 font-weight-800">Live Disaster Operations Overview</h2>
+    </div>
+
+    <div class="stats-grid">
+      <!-- Card 1: Active Emergencies -->
+      <div class="stat-card hover-lift">
+        <div class="stat-icon red">
+          <i class="fa fa-exclamation-triangle"></i>
+        </div>
+        <div>
+          <div id="stat-active-incidents" class="stat-value">0</div>
+          <div class="stat-label">Active Emergencies</div>
+          <div class="font-size-sm color-muted mt-1"><i class="fa fa-arrow-up text-danger me-1"></i> Live Tracked</div>
+        </div>
+      </div>
+
+      <!-- Card 2: Critical Severity -->
+      <div class="stat-card hover-lift">
+        <div class="stat-icon orange">
+          <i class="fa fa-radiation"></i>
+        </div>
+        <div>
+          <div id="stat-critical-incidents" class="stat-value">0</div>
+          <div class="stat-label">Critical Severity</div>
+          <div class="font-size-sm color-muted mt-1"><i class="fa fa-bolt text-warning me-1"></i> High Priority</div>
+        </div>
+      </div>
+
+      <!-- Card 3: Open Shelters -->
+      <div class="stat-card hover-lift">
+        <div class="stat-icon green">
+          <i class="fa fa-house-chimney"></i>
+        </div>
+        <div>
+          <div id="stat-active-shelters" class="stat-value">0</div>
+          <div class="stat-label">Open Shelters</div>
+          <div class="font-size-sm color-muted mt-1"><i class="fa fa-check-circle text-success me-1"></i> Ready &amp; Active</div>
+        </div>
+      </div>
+
+      <!-- Card 4: Rescue Squads -->
+      <div class="stat-card hover-lift">
+        <div class="stat-icon blue">
+          <i class="fa fa-user-shield"></i>
+        </div>
+        <div>
+          <div class="stat-value">48</div>
+          <div class="stat-label">Rescue Squads</div>
+          <div class="font-size-sm color-muted mt-1"><i class="fa fa-truck text-info me-1"></i> Deployed</div>
+        </div>
+      </div>
+
+      <!-- Card 5: Citizens Assisted -->
+      <div class="stat-card hover-lift">
+        <div class="stat-icon purple">
+          <i class="fa fa-heart-pulse"></i>
+        </div>
+        <div>
+          <div class="stat-value">14,280</div>
+          <div class="stat-label">Citizens Safe</div>
+          <div class="font-size-sm color-muted mt-1"><i class="fa fa-shield-cat text-purple me-1"></i> Evacuated</div>
+        </div>
+      </div>
+
+      <!-- Card 6: Response Time -->
+      <div class="stat-card hover-lift">
+        <div class="stat-icon cyan">
+          <i class="fa fa-stopwatch"></i>
+        </div>
+        <div>
+          <div class="stat-value">&lt; 4.2m</div>
+          <div class="stat-label">Avg Response Time</div>
+          <div class="font-size-sm color-muted mt-1"><i class="fa fa-rocket text-cyan me-1"></i> Accelerated</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider-glow"></div>
+
+  <!-- ── 6. Live Emergency Bulletin & Situation Board ─────────────────── -->
   <section id="live-dashboard-section" class="container my-5">
     <div class="row g-4">
       
-      <!-- Panel 1: Live Status & Metrics -->
+      <!-- Left Column: System Status Grid -->
       <div class="col-lg-4 col-md-12">
         <div class="card h-100 p-4 d-flex flex-column justify-content-between">
           <div>
             <div class="d-flex align-items-center justify-content-between mb-4">
               <h3 class="fs-5 m-0 font-weight-700">
-                <i class="fa fa-chart-bar text-primary me-2"></i> Live Status Board
+                <i class="fa fa-satellite-dish text-primary me-2"></i> System Infrastructure
               </h3>
-              <span class="badge" style="background: rgba(16,185,129,0.1); color: var(--success); border: 1px solid rgba(16,185,129,0.2);">
-                <span class="pulse-indicator"></span>Monitoring
-              </span>
+              <span class="badge badge-resolved"><span class="pulse-indicator"></span>Active</span>
             </div>
             
-            <!-- Stat Item 1: Active Emergencies -->
-            <div class="mb-4 p-3 rounded-3 hover-lift" style="background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border);">
-              <div class="d-flex justify-content-between align-items-center">
+            <div class="p-3 rounded-3 mb-4" style="background: rgba(59,130,246,0.06); border: 1px solid rgba(59,130,246,0.2);">
+              <div class="d-flex align-items-center gap-3">
+                <i class="fa fa-brain text-purple fs-2"></i>
                 <div>
-                  <span class="text-secondary font-size-sm">Active Emergencies</span>
-                  <h2 id="stat-active-incidents" class="m-0 font-weight-800 text-danger mt-1">0</h2>
-                </div>
-                <div class="p-3 rounded-3" style="background: rgba(239,68,68,0.1); color: var(--danger);">
-                  <i class="fa fa-exclamation-triangle fs-3"></i>
+                  <div class="font-weight-700 fs-6">Neural Risk Engine</div>
+                  <div class="font-size-sm color-muted">Deep Learning Incident Severity Predictor</div>
                 </div>
               </div>
             </div>
 
-            <!-- Stat Item 2: Critical Alerts -->
-            <div class="mb-4 p-3 rounded-3 hover-lift" style="background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border);">
-              <div class="d-flex justify-content-between align-items-center">
-                <div>
-                  <span class="text-secondary font-size-sm">Critical Severity</span>
-                  <h2 id="stat-critical-incidents" class="m-0 font-weight-800 text-warning mt-1">0</h2>
-                </div>
-                <div class="p-3 rounded-3" style="background: rgba(245,158,11,0.1); color: var(--warning);">
-                  <i class="fa fa-radiation fs-3"></i>
-                </div>
+            <div id="system-status-grid" class="status-grid">
+              <div class="status-item">
+                <div class="status-service-name"><i class="fa fa-brain text-primary"></i> AI Engine</div>
+                <span class="status-badge status-online">Operational</span>
               </div>
-            </div>
-
-            <!-- Stat Item 3: Shelter Occupancy -->
-            <div class="p-3 rounded-3 hover-lift" style="background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border);">
-              <div class="d-flex justify-content-between align-items-center">
-                <div>
-                  <span class="text-secondary font-size-sm">Open Shelters</span>
-                  <h2 id="stat-active-shelters" class="m-0 font-weight-800 text-success mt-1">0</h2>
-                </div>
-                <div class="p-3 rounded-3" style="background: rgba(16,185,129,0.1); color: var(--success);">
-                  <i class="fa fa-house-chimney fs-3"></i>
-                </div>
+              <div class="status-item">
+                <div class="status-service-name"><i class="fa fa-satellite text-info"></i> GIS Telemetry</div>
+                <span class="status-badge status-online">Connected</span>
               </div>
-            </div>
-
-            <!-- System Status Panel -->
-            <div class="mt-4 pt-3 border-top border-glass">
-              <h4 class="fs-6 mb-3 font-weight-700 color-white">
-                <i class="fa fa-server text-info me-2"></i> System Health Status
-              </h4>
-              <div id="system-status-grid" class="status-grid">
-                <!-- AI Core -->
-                <div class="status-item">
-                  <div class="status-service-name">
-                    <i class="fa fa-brain text-primary"></i> AI Core
-                  </div>
-                  <span class="status-badge status-online">Online</span>
-                </div>
-                <!-- Backend API -->
-                <div class="status-item">
-                  <div class="status-service-name">
-                    <i class="fa fa-network-wired text-info"></i> API
-                  </div>
-                  <span class="status-badge status-connecting" id="status-api">Checking</span>
-                </div>
-                <!-- WebSockets -->
-                <div class="status-item">
-                  <div class="status-service-name">
-                    <i class="fa fa-exchange-alt text-warning"></i> WS
-                  </div>
-                  <span class="status-badge status-connecting" id="status-ws">Checking</span>
-                </div>
-                <!-- Database -->
-                <div class="status-item">
-                  <div class="status-service-name">
-                    <i class="fa fa-database text-success"></i> DB
-                  </div>
-                  <span class="status-badge status-online">Online</span>
-                </div>
-                <!-- Firebase -->
-                <div class="status-item">
-                  <div class="status-service-name">
-                    <i class="fa fa-cloud text-danger"></i> Firebase
-                  </div>
-                  <span class="status-badge status-online">Synced</span>
-                </div>
-                <!-- Storage -->
-                <div class="status-item">
-                  <div class="status-service-name">
-                    <i class="fa fa-hdd text-secondary"></i> Storage
-                  </div>
-                  <span class="status-badge status-online">Online</span>
-                </div>
+              <div class="status-item">
+                <div class="status-service-name"><i class="fa fa-database text-success"></i> Database</div>
+                <span class="status-badge status-online">Synced</span>
+              </div>
+              <div class="status-item">
+                <div class="status-service-name"><i class="fa fa-broadcast-tower text-danger"></i> Alert Gateway</div>
+                <span class="status-badge status-online">Online</span>
               </div>
             </div>
           </div>
           
           <div class="mt-4 pt-3 border-top border-glass">
-            <a href="login.html?register=true" class="btn btn-primary w-100">
-              <i class="fa fa-plus-circle me-2"></i> Report New Incident
+            <a href="login.html?register=true" class="btn btn-primary w-100 py-3">
+              <i class="fa fa-plus-circle me-2"></i> Report Emergency Incident
             </a>
           </div>
         </div>
       </div>
       
-      <!-- Panel 2: Live Incident Bulletin / Feed -->
+      <!-- Right Column: Live Bulletin Ticker -->
       <div class="col-lg-8 col-md-12">
         <div class="card h-100 p-4">
           <div class="d-flex justify-content-between align-items-center mb-4">
             <h3 class="fs-5 m-0 font-weight-700">
-              <i class="fa fa-rss text-danger me-2"></i> Live Incident Bulletin
+              <i class="fa fa-rss text-danger me-2"></i> Live Emergency Ticker Bulletin
             </h3>
             <span class="text-secondary font-size-sm" id="bulletin-timestamp">Updating...</span>
           </div>
           
           <div id="live-bulletin-container" class="ticker-container">
             <div class="text-center py-5">
-              <div class="spinner-border text-danger" role="status">
+              <div class="spinner-border text-primary" role="status">
                 <span class="visually-hidden">Loading...</span>
               </div>
-              <p class="mt-2 text-secondary">Fetching latest status updates...</p>
+              <p class="mt-2 text-secondary">Connecting to live disaster telemetry stream...</p>
             </div>
           </div>
         </div>
       </div>
-      
+
     </div>
   </section>
 
-  <!-- Hotlines Grid -->
-  <section class="container my-5">
+  <div class="section-divider-glow"></div>
+
+  <!-- ── 7. AI Engine & Radar Sweep Showcase Panel ───────────────────── -->
+  <section class="container my-5" id="ai-showcase">
+    <div class="showcase-panel">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+          <span class="badge badge-info mb-3 px-3 py-2 fs-6"><i class="fa fa-microchip me-2"></i> Neural Predictive Analytics</span>
+          <h2 class="display-6 font-weight-800 mb-3">AI Incident Severity &amp; Duplicate Suppression Engine</h2>
+          <p class="color-muted fs-6 mb-4">
+            ResQAI analyzes incoming emergency signals in real-time, cross-referencing natural language descriptions, spatial proximity, and satellite imagery to calculate threat levels, deduplicate incoming calls, and recommend optimal rescue vectors.
+          </p>
+          <div class="d-flex gap-3 flex-wrap">
+            <div class="p-3 rounded-3" style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); flex: 1; min-width: 140px;">
+              <div class="text-cyan font-weight-800 fs-3">99.4%</div>
+              <div class="font-size-sm color-muted">Duplicate Detection</div>
+            </div>
+            <div class="p-3 rounded-3" style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); flex: 1; min-width: 140px;">
+              <div class="text-purple font-weight-800 fs-3">&lt; 1.2s</div>
+              <div class="font-size-sm color-muted">AI Response Time</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card p-4" style="background: rgba(5,8,22,0.85);">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <div class="d-flex align-items-center gap-3">
+                <!-- Animated Radar Graphic -->
+                <div class="radar-sweep-container">
+                  <div class="radar-sweep-line"></div>
+                  <div class="radar-target-dot" style="top: 35%; left: 60%;"></div>
+                  <div class="radar-target-dot" style="top: 65%; left: 30%;"></div>
+                  <i class="fa fa-crosshairs text-primary fs-3"></i>
+                </div>
+                <div>
+                  <div class="font-weight-800 fs-6 color-white">Radar Radar Sweep Active</div>
+                  <div class="font-size-sm color-muted">Sector 4 Disaster Telemetry</div>
+                </div>
+              </div>
+              <span class="badge badge-critical">HIGH ALERT</span>
+            </div>
+
+            <div class="cc-confidence-meter mb-3">
+              <span class="font-size-sm color-muted">AI Threat Confidence</span>
+              <div class="cc-confidence-bar">
+                <div class="cc-confidence-fill" style="width: 94%;"></div>
+              </div>
+              <span class="cc-confidence-pct">94%</span>
+            </div>
+
+            <div class="cc-ai-reasoning">
+              <div class="cc-ai-reasoning-title"><i class="fa fa-lightbulb"></i> Neural Vector Recommendation</div>
+              Flash flood escalation detected near Coastal Zone B. Recommend immediate dispatch of 3 Motorized Rescue Boats and regional evacuation broadcasts to 4,500 residents.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider-glow"></div>
+
+  <!-- ── 8. Enterprise Capabilities Grid ─────────────────────────────── -->
+  <section class="container my-5" id="features">
+    <div class="text-center mb-5">
+      <span class="badge badge-primary px-3 py-2 fs-6 mb-2"><i class="fa fa-cubes me-2"></i> Core Capabilities</span>
+      <h2 class="display-6 font-weight-800">Enterprise AI Infrastructure for Crisis Response</h2>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card-glass">
+        <div class="feature-icon-box"><i class="fa fa-brain"></i></div>
+        <h3>AI Disaster Forecasting</h3>
+        <p>Predict incident escalation pathways using deep learning algorithms trained on historic meteorological and topographical telemetry.</p>
+      </div>
+      <div class="feature-card-glass">
+        <div class="feature-icon-box"><i class="fa fa-map-marked-alt"></i></div>
+        <h3>Realtime GIS Tracking</h3>
+        <p>Plot live GPS incident markers, rescue unit trajectories, and active evacuation zones on high-precision dark GIS maps.</p>
+      </div>
+      <div class="feature-card-glass">
+        <div class="feature-icon-box"><i class="fa fa-campground"></i></div>
+        <h3>Shelter Capacity Matrix</h3>
+        <p>Monitor real-time shelter occupancy, medical supplies, bed availability, and food rations with automated overflow warnings.</p>
+      </div>
+      <div class="feature-card-glass">
+        <div class="feature-icon-box"><i class="fa fa-truck-monster"></i></div>
+        <h3>Resource Allocation Engine</h3>
+        <p>Optimize dispatch for ambulances, fire squads, rescue boats, and medical supplies using priority route algorithms.</p>
+      </div>
+      <div class="feature-card-glass">
+        <div class="feature-icon-box"><i class="fa fa-bullhorn"></i></div>
+        <h3>Emergency Broadcast Alerts</h3>
+        <p>Instant SMS, push notifications, and siren triggers sent automatically to citizens within geofenced risk perimeters.</p>
+      </div>
+      <div class="feature-card-glass">
+        <div class="feature-icon-box"><i class="fa fa-users-gear"></i></div>
+        <h3>Multi-Agency Mission Control</h3>
+        <p>Customized command dashboards tailored specifically for Citizens, Rescue Squads, Government Officers, and System Administrators.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider-glow"></div>
+
+  <!-- ── 9. Response Workflow Timeline ────────────────────────────────── -->
+  <section class="container my-5" id="workflow">
+    <div class="text-center mb-5">
+      <span class="badge badge-success px-3 py-2 fs-6 mb-2"><i class="fa fa-route me-2"></i> End-to-End Orchestration</span>
+      <h2 class="display-6 font-weight-800">Rapid Response Emergency Workflow</h2>
+    </div>
+
+    <div class="workflow-timeline">
+      <div class="workflow-step-card">
+        <div class="workflow-step-number">1</div>
+        <div class="workflow-step-title">Citizen Report</div>
+        <div class="workflow-step-desc">GPS-tagged report submitted with media attachment</div>
+      </div>
+      <div class="workflow-step-card">
+        <div class="workflow-step-number">2</div>
+        <div class="workflow-step-title">AI Analysis</div>
+        <div class="workflow-step-desc">NLP risk classification &amp; duplicate check</div>
+      </div>
+      <div class="workflow-step-card">
+        <div class="workflow-step-number">3</div>
+        <div class="workflow-step-title">Risk Scoring</div>
+        <div class="workflow-step-desc">Severity assigned automatically</div>
+      </div>
+      <div class="workflow-step-card">
+        <div class="workflow-step-number">4</div>
+        <div class="workflow-step-title">Dispatch Squad</div>
+        <div class="workflow-step-desc">Nearest rescue unit assigned</div>
+      </div>
+      <div class="workflow-step-card">
+        <div class="workflow-step-number">5</div>
+        <div class="workflow-step-title">Shelter Match</div>
+        <div class="workflow-step-desc">Victims guided to open shelters</div>
+      </div>
+      <div class="workflow-step-card">
+        <div class="workflow-step-number">6</div>
+        <div class="workflow-step-title">Resolution</div>
+        <div class="workflow-step-desc">Incident verified &amp; closed</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider-glow"></div>
+
+  <!-- ── 10. Technology Stack Wall ────────────────────────────────────── -->
+  <section class="container my-5 text-center" id="tech">
+    <span class="badge badge-secondary px-3 py-2 fs-6 mb-3"><i class="fa fa-code me-2"></i> Architecture</span>
+    <h2 class="display-6 font-weight-800 mb-4">Built with Industry-Grade Open Technology</h2>
+
+    <div class="tech-stack-wall">
+      <div class="tech-badge-chip"><i class="fa fa-bolt text-warning"></i> FastAPI Engine</div>
+      <div class="tech-badge-chip"><i class="fa fa-brain text-purple"></i> PyTorch Risk Models</div>
+      <div class="tech-badge-chip"><i class="fa fa-map text-info"></i> Leaflet GIS Telemetry</div>
+      <div class="tech-badge-chip"><i class="fa fa-network-wired text-success"></i> WebSockets Realtime</div>
+      <div class="tech-badge-chip"><i class="fa fa-database text-cyan"></i> SQLite / PostgreSQL</div>
+      <div class="tech-badge-chip"><i class="fa fa-cloud text-danger"></i> Firebase Realtime Sync</div>
+      <div class="tech-badge-chip"><i class="fa fa-chart-pie text-primary"></i> Chart.js Analytics</div>
+    </div>
+  </section>
+
+  <div class="section-divider-glow"></div>
+
+  <!-- ── 11. Frequently Asked Questions (FAQ) ─────────────────────────── -->
+  <section class="container my-5" id="faq">
+    <div class="text-center mb-5">
+      <span class="badge badge-info px-3 py-2 fs-6 mb-2"><i class="fa fa-circle-question me-2"></i> Help &amp; FAQs</span>
+      <h2 class="display-6 font-weight-800">Frequently Asked Questions</h2>
+    </div>
+
+    <div class="faq-accordion">
+      <div class="faq-item-glass">
+        <div class="faq-question">
+          <span>How does ResQAI prioritize emergency reports?</span>
+          <i class="fa fa-chevron-down text-muted"></i>
+        </div>
+        <div class="faq-answer">
+          Our AI Risk Engine evaluates text description severity keywords, attached image diagnostics, citizen location proximity, and environmental weather data to assign an instant severity score (Critical, High, Medium, Low).
+        </div>
+      </div>
+
+      <div class="faq-item-glass">
+        <div class="faq-question">
+          <span>Can citizens report incidents without logging in?</span>
+          <i class="fa fa-chevron-down text-muted"></i>
+        </div>
+        <div class="faq-answer">
+          Citizen reporting requires quick registration or single-click authentication so response teams can verify contact info, coordinate rescue locations, and send real-time SMS status updates.
+        </div>
+      </div>
+
+      <div class="faq-item-glass">
+        <div class="faq-question">
+          <span>How do government agencies access the command center?</span>
+          <i class="fa fa-chevron-down text-muted"></i>
+        </div>
+        <div class="faq-answer">
+          Disaster Officers and Rescue Leads are assigned high-privilege JWT roles that unlock full resource allocation tools, emergency broadcast controls, and multi-agency GIS maps.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider-glow"></div>
+
+  <!-- ── 12. Emergency Hotlines Grid ──────────────────────────────────── -->
+  <section class="container my-5" id="hotlines">
     <div class="text-center mb-4">
-      <h2>Emergency Hotlines</h2>
-      <p class="color-muted">Direct toll-free lines for immediate response</p>
+      <h2>Emergency Toll-Free Hotlines</h2>
+      <p class="color-muted">Direct lines for immediate emergency dispatch</p>
     </div>
     <div class="row g-4">
       <div class="col-md-3">
-        <div class="card text-center py-4">
+        <div class="card text-center py-4 hover-lift">
           <i class="fa fa-phone-volume text-danger fs-1 mb-2"></i>
           <h4>112</h4>
           <div class="color-muted font-size-sm">National Emergency</div>
         </div>
       </div>
       <div class="col-md-3">
-        <div class="card text-center py-4">
+        <div class="card text-center py-4 hover-lift">
           <i class="fa fa-fire text-warning fs-1 mb-2"></i>
           <h4>101</h4>
           <div class="color-muted font-size-sm">Fire Rescue</div>
         </div>
       </div>
       <div class="col-md-3">
-        <div class="card text-center py-4">
+        <div class="card text-center py-4 hover-lift">
           <i class="fa fa-ambulance text-success fs-1 mb-2"></i>
           <h4>108</h4>
           <div class="color-muted font-size-sm">Ambulance Service</div>
         </div>
       </div>
       <div class="col-md-3">
-        <div class="card text-center py-4">
+        <div class="card text-center py-4 hover-lift">
           <i class="fa fa-shield-alt text-info fs-1 mb-2"></i>
           <h4>100</h4>
           <div class="color-muted font-size-sm">Police Control</div>
@@ -232,9 +550,143 @@
     </div>
   </section>
 
+  <!-- ── 13. Modern Footer ────────────────────────────────────────────── -->
+  <footer class="footer-landing">
+    <div class="container">
+      <div class="row g-4 mb-5">
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="brand-logo" style="width: 38px; height: 38px; background: var(--gradient-brand); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: #fff;">
+              <i class="fa fa-shield-alt"></i>
+            </div>
+            <span class="font-weight-800 fs-4 color-white">ResQ<span style="color: var(--primary-light);">AI</span></span>
+          </div>
+          <p class="font-size-sm color-muted mb-4">
+            World-class AI Disaster Response &amp; Rapid Coordination Platform powered by artificial intelligence, real-time telemetry, and GIS mapping.
+          </p>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <div class="footer-col-title">Platform</div>
+          <div class="footer-link-list">
+            <a href="dashboard.html">Command Dashboard</a>
+            <a href="login.html">Portal Login</a>
+            <a href="login.html?register=true">Report Incident</a>
+            <a href="dashboard.html?tab=shelters">Shelters List</a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <div class="footer-col-title">Resources</div>
+          <div class="footer-link-list">
+            <a href="#">API Documentation</a>
+            <a href="#">System Health Check</a>
+            <a href="#">Security Protocol</a>
+            <a href="#">Disaster Guidelines</a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-col-title">24/7 Command Hotline</div>
+          <div class="p-3 rounded-3" style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border);">
+            <div class="d-flex align-items-center gap-3">
+              <i class="fa fa-headset text-danger fs-2"></i>
+              <div>
+                <div class="font-weight-800 fs-5 color-white">112 / Toll-Free</div>
+                <div class="font-size-sm color-muted">National Disaster Command Dispatch</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-4 border-top border-glass d-flex justify-content-between align-items-center flex-wrap gap-3 font-size-sm color-muted">
+        <div>&copy; 2026 ResQAI Disaster Response Platform. All rights reserved.</div>
+        <div class="d-flex gap-4">
+          <a href="#" class="color-muted">Privacy Policy</a>
+          <a href="#" class="color-muted">Terms of Service</a>
+          <a href="#" class="color-muted">Security Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
   <!-- JS Dependencies -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <!-- Landing Page Business Logic -->
   <script type="module" src="js/landing.js" defer></script>
+
+  <!-- Interactive Background Canvas Script (60 FPS Interactive Particle System) -->
+  <script>
+    // 1. Particle & Constellation Canvas Engine
+    const canvas = document.getElementById('hero-canvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const particles = Array.from({ length: 45 }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        radius: Math.random() * 2 + 1,
+        color: Math.random() > 0.5 ? 'rgba(59, 130, 246, ' : 'rgba(124, 58, 237, '
+      }));
+
+      function renderParticles() {
+        ctx.clearRect(0, 0, width, height);
+
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0 || p.x > width) p.vx *= -1;
+          if (p.y < 0 || p.y > height) p.vy *= -1;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = p.color + '0.6)';
+          ctx.fill();
+
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dx = p.x - p2.x;
+            const dy = p.y - p2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 130) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = `rgba(59, 130, 246, ${0.15 * (1 - dist / 130)})`;
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(renderParticles);
+      }
+      renderParticles();
+    }
+
+    // 2. Navbar scroll shrink effect
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('landing-navbar');
+      if (window.scrollY > 40) {
+        nav?.classList.add('scrolled');
+      } else {
+        nav?.classList.remove('scrolled');
+      }
+    });
+  </script>
+
+</body>
 
 </html>

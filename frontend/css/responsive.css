@@ -1,12 +1,21 @@
-/* Responsive breakpoints */
+/* ═══════════════════════════════════════════════════════════════════
+   ResQAI — Responsive Breakpoints & Accessibility System
+   Ensures seamless UI across Desktop, Laptop, Tablet & Mobile
+   ═══════════════════════════════════════════════════════════════════ */
 
-/* Desktop Large: ≥1400px */
+/* ── Desktop Large: ≥1400px ────────────────────────────────────────── */
 @media (min-width: 1400px) {
   .cc-row-4 { grid-template-columns: repeat(4, 1fr); }
   .cc-row-map { grid-template-columns: 2fr 1fr; }
 }
 
-/* Tablet: ≤992px */
+/* ── Laptop / Small Desktop: 993px – 1200px ────────────────────────── */
+@media (max-width: 1200px) {
+  .cc-row-4 { grid-template-columns: repeat(2, 1fr); }
+  .cc-row-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── Tablet: ≤992px ────────────────────────────────────────────────── */
 @media (max-width: 992px) {
   .auth-page { grid-template-columns: 1fr; }
   .auth-left  { display: none; }
@@ -50,7 +59,7 @@
   .cc-quick-actions { bottom: 16px; right: 16px; }
 }
 
-/* Mobile: ≤576px */
+/* ── Mobile: ≤576px ────────────────────────────────────────────────── */
 @media (max-width: 576px) {
   .page-content { padding: 16px; }
   .topbar {
@@ -145,9 +154,10 @@
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(5, 8, 22, 0.7);
   z-index: 190;
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 .sidebar-overlay.active { display: block; }
 
@@ -157,10 +167,15 @@
   justify-content: center;
   width: 38px;
   height: 38px;
-  background: rgba(255,255,255,0.06);
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-sm);
   cursor: pointer;
   color: var(--text-primary);
+  transition: all var(--transition-fast);
 }
 
+.sidebar-toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(59, 130, 246, 0.3);
+}
