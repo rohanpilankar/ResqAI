@@ -1,3 +1,8 @@
+/* ═══════════════════════════════════════════════════════════════════
+   ResQAI — Premium Button System
+   Gradient buttons with ripple, glow, and state animations
+   ═══════════════════════════════════════════════════════════════════ */
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -5,87 +10,105 @@
   gap: 8px;
   padding: 10px 22px;
   border-radius: var(--radius-sm);
-  font-weight: 600;
+  font-weight: var(--fw-semibold);
   font-size: 0.9rem;
+  font-family: var(--font-main);
   border: none;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
   position: relative;
   overflow: hidden;
   text-decoration: none;
   user-select: none;
+  letter-spacing: 0.01em;
 }
 
+/* Ripple effect layer */
 .btn::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(255,255,255,0);
-  transition: background var(--transition-fast);
+  background: radial-gradient(circle at var(--ripple-x, 50%) var(--ripple-y, 50%), rgba(255,255,255,0.2) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
-.btn:hover::after { background: rgba(255,255,255,0.08); }
+.btn:hover::after { opacity: 1; }
 .btn:active {
   transform: translateY(1px) scale(0.98) !important;
 }
+.btn:active::after { opacity: 0.3; }
 
+/* Icon animation on hover */
+.btn:hover i {
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
+}
+
+/* ── Primary Button ────────────────────────────────────────────────── */
 .btn-primary {
-  background: linear-gradient(135deg, #e63946, #c1121f);
+  background: linear-gradient(135deg, #3B82F6, #2563EB);
   color: #ffffff;
-  box-shadow: 0 4px 16px rgba(230, 57, 70, 0.4);
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.35);
 }
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(230, 57, 70, 0.55);
+  box-shadow: 0 8px 28px rgba(59, 130, 246, 0.5), 0 0 0 1px rgba(59, 130, 246, 0.2);
   color: #ffffff;
 }
 
+/* ── Secondary Button ──────────────────────────────────────────────── */
 .btn-secondary {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.06);
   color: var(--text-primary);
   border: 1px solid var(--glass-border);
   backdrop-filter: blur(8px);
 }
 .btn-secondary:hover {
-  background: rgba(255,255,255,0.16);
-  border-color: rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.2);
   color: #ffffff;
   transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
+/* ── Success Button ────────────────────────────────────────────────── */
 .btn-success {
-  background: linear-gradient(135deg, #10b981, #059669);
+  background: linear-gradient(135deg, #10B981, #059669);
   color: #ffffff;
-  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.35);
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
 }
 .btn-success:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.5);
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.45);
   color: #ffffff;
 }
 
+/* ── Warning Button ────────────────────────────────────────────────── */
 .btn-warning {
-  background: linear-gradient(135deg, #f59e0b, #d97706);
+  background: linear-gradient(135deg, #F59E0B, #D97706);
   color: #ffffff;
-  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35);
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
 }
 .btn-warning:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.5);
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.45);
   color: #ffffff;
 }
 
+/* ── Danger Button ─────────────────────────────────────────────────── */
 .btn-danger {
-  background: linear-gradient(135deg, #ef4444, #dc2626);
+  background: linear-gradient(135deg, #EF4444, #DC2626);
   color: #ffffff;
-  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.35);
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3);
 }
 .btn-danger:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.5);
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.45);
   color: #ffffff;
 }
 
+/* ── Outline Primary ───────────────────────────────────────────────── */
 .btn-outline-primary {
   background: transparent;
   color: var(--primary-light);
@@ -94,17 +117,46 @@
 .btn-outline-primary:hover {
   background: var(--primary);
   color: #ffffff;
-  box-shadow: var(--shadow-glow-red);
+  box-shadow: var(--shadow-glow-blue);
 }
 
+/* ── Ghost Button ──────────────────────────────────────────────────── */
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border: none;
+}
+.btn-ghost:hover {
+  background: rgba(255,255,255,0.06);
+  color: var(--text-primary);
+}
+
+/* ── Sizes ─────────────────────────────────────────────────────────── */
 .btn-sm { padding: 7px 16px; font-size: 0.82rem; border-radius: 6px; }
 .btn-lg { padding: 14px 30px; font-size: 1.02rem; border-radius: var(--radius-md); }
 .btn-icon { padding: 8px; width: 38px; height: 38px; border-radius: var(--radius-sm); justify-content: center; }
 
+/* ── States ────────────────────────────────────────────────────────── */
 .btn:disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
   transform: none !important;
   box-shadow: none !important;
+  filter: grayscale(0.4);
 }
 
+/* Loading state */
+.btn.is-loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+.btn.is-loading::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  margin-right: 6px;
+}

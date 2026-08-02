@@ -1,0 +1,606 @@
+/* ═══════════════════════════════════════════════════════════════════
+   ResQAI — Award-Winning World-Class Landing Page Stylesheet
+   Inspired by Apple VisionOS, Linear, Stripe, Vercel, Palantir, Raycast, Framer, DeepMind
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Glassmorphic Navigation (VisionOS + Linear Style) ─────────── */
+.navbar-landing {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  max-width: 1280px;
+  width: calc(100% - 32px);
+  background: rgba(8, 17, 31, 0.7);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 28px;
+  padding: 10px 24px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(59, 130, 246, 0.12);
+}
+
+.navbar-landing.scrolled {
+  top: 8px;
+  padding: 8px 20px;
+  background: rgba(5, 8, 22, 0.92);
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), var(--shadow-glow-blue);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-link-item {
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+  font-weight: var(--fw-semibold);
+  transition: all var(--transition-fast);
+  position: relative;
+  padding: 6px 0;
+}
+
+.nav-link-item:hover,
+.nav-link-item.active {
+  color: #ffffff;
+}
+
+.nav-link-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0%;
+  height: 2px;
+  background: var(--gradient-brand);
+  border-radius: 2px;
+  transition: width 0.25s ease;
+  box-shadow: 0 0 8px var(--primary);
+}
+
+.nav-link-item:hover::after,
+.nav-link-item.active::after {
+  width: 100%;
+}
+
+/* ── 2. Cinematic Hero Environment (Raycast + Palantir Style) ─────── */
+.hero-landing {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 140px 24px 80px;
+  background-color: var(--bg-dark);
+  text-align: center;
+}
+
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.85;
+}
+
+.hero-particle-grid {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 80% 60% at 50% 20%, rgba(59, 130, 246, 0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(124, 58, 237, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 20% 70%, rgba(6, 182, 212, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-size: 60px 60px;
+  background-image:
+    linear-gradient(to right, rgba(59, 130, 246, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 0%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-content-wrapper {
+  position: relative;
+  z-index: 10;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.hero-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 22px;
+  border-radius: 40px;
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: var(--primary-light);
+  font-size: 0.84rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.05em;
+  margin-bottom: 28px;
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.25);
+  backdrop-filter: blur(16px);
+  transition: all var(--transition-med);
+}
+
+.hero-badge-pill:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+  box-shadow: 0 0 35px rgba(59, 130, 246, 0.4);
+}
+
+.hero-title-main {
+  font-size: clamp(2.8rem, 5.5vw, 5.2rem);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  margin-bottom: 24px;
+  color: #ffffff;
+}
+
+.hero-title-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #60A5FA 35%, #C084FC 65%, #38BDF8 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 6s ease infinite;
+  display: block;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  color: var(--text-secondary);
+  max-width: 780px;
+  margin: 0 auto 40px;
+  line-height: 1.65;
+  font-weight: var(--fw-medium);
+}
+
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+/* ── 3. Floating Live Status Bar (Mission Control Style) ──────────── */
+.status-bar-floating {
+  max-width: 1200px;
+  width: 100%;
+  margin: -50px auto 50px;
+  position: relative;
+  z-index: 20;
+  background: rgba(11, 17, 32, 0.88);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 18px 32px;
+  box-shadow: var(--shadow-xl), 0 0 35px rgba(59, 130, 246, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.status-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+}
+
+.status-bar-item strong {
+  color: var(--text-primary);
+  font-weight: var(--fw-bold);
+}
+
+/* ── 4. Trusted Agencies Logo Cloud (Stripe / Vercel Style) ──────── */
+.trusted-agencies-section {
+  padding: 30px 0 50px;
+  text-align: center;
+}
+
+.trusted-label {
+  font-size: 0.75rem;
+  font-weight: var(--fw-bold);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 24px;
+}
+
+.agencies-logo-cloud {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  opacity: 0.75;
+}
+
+.agency-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+  font-weight: var(--fw-semibold);
+  transition: all var(--transition-fast);
+}
+
+.agency-chip:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+/* ── 5. Feature Cards Grid (Framer / Linear Style) ────────────────── */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.feature-card-glass {
+  background: var(--bg-card);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 32px 26px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.feature-card-glass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.4), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.feature-card-glass:hover::before {
+  opacity: 1;
+}
+
+.feature-card-glass:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(59, 130, 246, 0.35);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg), var(--glass-glow-blue);
+}
+
+.feature-icon-box {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(124, 58, 237, 0.15));
+  color: var(--primary-light);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  box-shadow: 0 4px 18px rgba(59, 130, 246, 0.18);
+  transition: transform 0.3s ease;
+}
+
+.feature-card-glass:hover .feature-icon-box {
+  transform: scale(1.1) rotate(-4deg);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(124, 58, 237, 0.25));
+}
+
+.feature-card-glass h3 {
+  font-size: 1.18rem;
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.feature-card-glass p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* ── 6. Command Center Preview (Arc Browser / VisionOS Style) ──────── */
+.showcase-panel {
+  background: rgba(11, 17, 32, 0.92);
+  backdrop-filter: blur(var(--glass-blur-heavy));
+  -webkit-backdrop-filter: blur(var(--glass-blur-heavy));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  box-shadow: var(--shadow-xl), 0 0 50px rgba(59, 130, 246, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.showcase-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-brand);
+}
+
+.radar-sweep-container {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(59, 130, 246, 0.3);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+}
+
+.radar-sweep-line {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  top: 0;
+  right: 0;
+  background: linear-gradient(45deg, rgba(59, 130, 246, 0.6) 0%, transparent 100%);
+  transform-origin: bottom left;
+  animation: radarRotate 3s linear infinite;
+  border-radius: 0 100% 0 0;
+}
+
+@keyframes radarRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.radar-target-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--danger);
+  position: absolute;
+  box-shadow: 0 0 8px var(--danger);
+  animation: blink 1s ease infinite;
+}
+
+/* ── 7. Workflow Timeline Section (Linear Style) ───────────────────── */
+.workflow-timeline {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+  position: relative;
+  margin-top: 40px;
+}
+
+.workflow-step-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 24px 18px;
+  text-align: center;
+  position: relative;
+  transition: all var(--transition-med);
+}
+
+.workflow-step-card:hover {
+  border-color: rgba(59, 130, 246, 0.35);
+  transform: translateY(-5px);
+  background: var(--bg-card-hover);
+  box-shadow: var(--shadow-md), var(--glass-glow-blue);
+}
+
+.workflow-step-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--gradient-brand);
+  color: #fff;
+  font-weight: var(--fw-extrabold);
+  font-size: 0.86rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+  box-shadow: 0 0 14px rgba(59, 130, 246, 0.5);
+}
+
+.workflow-step-title {
+  font-size: 0.92rem;
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.workflow-step-desc {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ── 8. Technology Stack Wall (Vercel / DeepMind Style) ────────────── */
+.tech-stack-wall {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.tech-badge-chip {
+  padding: 8px 18px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: var(--fw-semibold);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all var(--transition-fast);
+}
+
+.tech-badge-chip:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* ── 9. FAQ Accordion Glass Section ────────────────────────────────── */
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.faq-item-glass {
+  background: var(--bg-card);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.faq-item-glass:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(59, 130, 246, 0.25);
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.02rem;
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+}
+
+.faq-answer {
+  margin-top: 12px;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ── 10. Modern Footer (Stripe / VisionOS Style) ───────────────────── */
+.footer-landing {
+  background: rgba(5, 8, 22, 0.96);
+  border-top: 1px solid var(--glass-border);
+  padding: 70px 0 32px;
+  color: var(--text-secondary);
+}
+
+.footer-col-title {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-weight: var(--fw-bold);
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.footer-link-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-link-list a {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  transition: color var(--transition-fast);
+}
+
+.footer-link-list a:hover {
+  color: var(--primary-light);
+}
+
+/* ── Section Animated Separator Line ───────────────────────────────── */
+.section-divider-glow {
+  height: 1px;
+  width: 100%;
+  max-width: 1140px;
+  margin: 60px auto;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), rgba(124, 58, 237, 0.3), transparent);
+}
+
+/* ── Responsive Rules ──────────────────────────────────────────────── */
+@media (max-width: 992px) {
+  .workflow-timeline {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .status-bar-floating {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .navbar-landing {
+    padding: 10px 16px;
+  }
+  .nav-links {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .workflow-timeline {
+    grid-template-columns: 1fr;
+  }
+  .navbar-landing {
+    border-radius: 18px;
+  }
+  .hero-title-main {
+    font-size: 2.3rem;
+  }
+  .hero-subtitle {
+    font-size: 0.98rem;
+  }
+}

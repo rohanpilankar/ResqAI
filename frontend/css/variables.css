@@ -1,53 +1,96 @@
 :root {
-  /* Brand Colors */
-  --primary: #e63946;
-  --primary-dark: #c1121f;
-  --primary-light: #ff6b6b;
-  --secondary: #1d3557;
-  --secondary-light: #457b9d;
-  --accent: #f4a261;
-  --accent-dark: #e76f51;
+  /* ═══ Brand / Accent Colors ═══ */
+  --primary: #3B82F6;
+  --primary-dark: #2563EB;
+  --primary-light: #60A5FA;
+  --secondary: #7C3AED;
+  --secondary-light: #8B5CF6;
+  --accent: #06B6D4;
+  --accent-dark: #0891B2;
 
-  /* Neutrals */
-  --bg-dark: #0a0f1e;
-  --bg-card: rgba(255, 255, 255, 0.06);
-  --bg-card-hover: rgba(255, 255, 255, 0.10);
-  --glass-border: rgba(255, 255, 255, 0.10);
-  --text-primary: #f0f4ff;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  /* ═══ Background Layers ═══ */
+  --bg-dark: #050816;
+  --bg-surface: #0B1120;
+  --bg-elevated: #101827;
+  --bg-card: rgba(255, 255, 255, 0.04);
+  --bg-card-hover: rgba(255, 255, 255, 0.07);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-hover: rgba(255, 255, 255, 0.14);
 
-  /* Status Colors */
-  --success: #10b981;
-  --warning: #f59e0b;
-  --danger: #ef4444;
-  --info: #3b82f6;
+  /* ═══ Text Colors ═══ */
+  --text-primary: #F0F4FF;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
 
-  /* Severity Colors */
-  --severity-critical: #ff0038;
-  --severity-high: #ff6b00;
-  --severity-medium: #f59e0b;
-  --severity-low: #10b981;
+  /* ═══ Status Colors ═══ */
+  --success: #10B981;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+  --info: #3B82F6;
+  --cyan: #06B6D4;
+  --purple: #7C3AED;
 
-  /* Spacing */
-  --sidebar-width: 260px;
+  /* ═══ Severity Colors ═══ */
+  --severity-critical: #FF0038;
+  --severity-high: #FF6B00;
+  --severity-medium: #F59E0B;
+  --severity-low: #10B981;
+
+  /* ═══ Glassmorphism ═══ */
+  --glass-bg: rgba(11, 17, 32, 0.65);
+  --glass-bg-heavy: rgba(11, 17, 32, 0.85);
+  --glass-blur: 20px;
+  --glass-blur-heavy: 40px;
+  --glass-glow-blue: 0 0 30px rgba(59, 130, 246, 0.15);
+  --glass-glow-purple: 0 0 30px rgba(124, 58, 237, 0.15);
+  --glass-glow-cyan: 0 0 30px rgba(6, 182, 212, 0.15);
+
+  /* ═══ Spacing ═══ */
+  --sidebar-width: 270px;
+  --sidebar-collapsed-width: 72px;
   --topbar-height: 64px;
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 20px;
   --radius-xl: 28px;
+  --radius-full: 9999px;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
 
-  /* Shadows */
+  /* ═══ Shadows ═══ */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 24px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
-  --shadow-glow-red: 0 0 20px rgba(230, 57, 70, 0.4);
+  --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.6);
+  --shadow-glow-blue: 0 0 20px rgba(59, 130, 246, 0.4);
+  --shadow-glow-purple: 0 0 20px rgba(124, 58, 237, 0.4);
+  --shadow-glow-cyan: 0 0 20px rgba(6, 182, 212, 0.4);
+  --shadow-glow-red: 0 0 20px rgba(239, 68, 68, 0.4);
 
-  /* Transitions */
-  --transition-fast: 0.15s ease;
-  --transition-med: 0.3s ease;
-  --transition-slow: 0.5s ease;
+  /* ═══ Transitions ═══ */
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-med: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 
-  /* Font */
-  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* ═══ Typography ═══ */
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+
+  /* ═══ Gradient Presets ═══ */
+  --gradient-brand: linear-gradient(135deg, #3B82F6, #7C3AED, #06B6D4);
+  --gradient-brand-subtle: linear-gradient(135deg, rgba(59,130,246,0.15), rgba(124,58,237,0.15));
+  --gradient-surface: linear-gradient(180deg, rgba(59,130,246,0.06) 0%, transparent 100%);
+  --gradient-glow: linear-gradient(135deg, #3B82F6 0%, #7C3AED 50%, #06B6D4 100%);
+  --gradient-danger: linear-gradient(135deg, #EF4444, #DC2626);
+  --gradient-success: linear-gradient(135deg, #10B981, #059669);
 }
